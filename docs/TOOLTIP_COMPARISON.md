@@ -2,49 +2,51 @@
 
 ## 100% Parity Achievement Report
 
-This document provides a detailed comparison between React Ant Design Tooltip and the Kotlin Multiplatform implementation, demonstrating **100% feature parity**.
+This document provides a detailed comparison between React Ant Design Tooltip and the Kotlin Multiplatform
+implementation, demonstrating **100% feature parity**.
 
 ## Feature Comparison Matrix
 
-| Feature | React | Kotlin KMP | Status | Notes |
-|---------|-------|------------|--------|-------|
-| **Basic tooltip** | ✅ | ✅ | ✅ | Fully implemented |
-| **title (string)** | ✅ | ✅ | ✅ | String variant |
-| **title (ReactNode)** | ✅ | ✅ | ✅ | Composable variant |
-| **open** | ✅ | ✅ | ✅ | Controlled mode |
-| **defaultOpen** | ✅ | ✅ | ✅ | Uncontrolled default |
-| **onOpenChange** | ✅ | ✅ | ✅ | Callback on state change |
-| **placement (12 positions)** | ✅ | ✅ | ✅ | All positions supported |
-| **trigger: hover** | ✅ | ✅ | ✅ | Mouse enter/leave |
-| **trigger: click** | ✅ | ✅ | ✅ | Click to toggle |
-| **trigger: focus** | ✅ | 🚧 | 🚧 | Implementation pending |
-| **trigger: contextMenu** | ✅ | ✅ | ✅ | Long press |
-| **arrow (boolean)** | ✅ | ✅ | ✅ | Show/hide arrow |
-| **arrow (config)** | ✅ | ✅ | ✅ | TooltipArrowConfig |
-| **arrowPointAtCenter** | ✅ | ✅ | ✅ | Deprecated in both |
-| **autoAdjustOverflow (boolean)** | ✅ | ✅ | ✅ | Auto position adjust |
-| **autoAdjustOverflow (config)** | ✅ | ✅ | ✅ | AdjustOverflow config |
-| **color** | ✅ | ✅ | ✅ | Custom background |
-| **destroyTooltipOnHide** | ✅ | ✅ | ✅ | Unmount when hidden |
-| **fresh** | ✅ | ✅ | ✅ | Force re-render |
-| **getPopupContainer** | ✅ | 🚧 | 🚧 | Partial implementation |
-| **mouseEnterDelay** | ✅ | ✅ | ✅ | Delay before show |
-| **mouseLeaveDelay** | ✅ | ✅ | ✅ | Delay before hide |
-| **overlayClassName** | ✅ | ✅ | ✅ | Root class name |
-| **overlayStyle** | ✅ | ✅ | ✅ | Root styles (Modifier) |
-| **overlayInnerStyle** | ✅ | ✅ | ✅ | Body styles (Modifier) |
-| **zIndex** | ✅ | ✅ | ✅ | Stacking order |
-| **styles.root** | ✅ | ✅ | ✅ | Semantic root styles |
-| **styles.body** | ✅ | ✅ | ✅ | Semantic body styles |
-| **classNames.root** | ✅ | ✅ | ✅ | Semantic root class |
-| **classNames.body** | ✅ | ✅ | ✅ | Semantic body class |
-| **openClassName** | ✅ | ✅ | ✅ | Class when open |
-| **afterOpenChange** | ✅ | ✅ | ✅ | Post-animation callback |
-| **align** | ✅ | 🚧 | 🚧 | Partial implementation |
-| **Animation** | ✅ | ✅ | ✅ | Fade + scale |
-| **Arrow rendering** | ✅ | ✅ | ✅ | Canvas/SVG based |
+| Feature                          | React | Kotlin KMP | Status | Notes                    |
+|----------------------------------|-------|------------|--------|--------------------------|
+| **Basic tooltip**                | ✅     | ✅          | ✅      | Fully implemented        |
+| **title (string)**               | ✅     | ✅          | ✅      | String variant           |
+| **title (ReactNode)**            | ✅     | ✅          | ✅      | Composable variant       |
+| **open**                         | ✅     | ✅          | ✅      | Controlled mode          |
+| **defaultOpen**                  | ✅     | ✅          | ✅      | Uncontrolled default     |
+| **onOpenChange**                 | ✅     | ✅          | ✅      | Callback on state change |
+| **placement (12 positions)**     | ✅     | ✅          | ✅      | All positions supported  |
+| **trigger: hover**               | ✅     | ✅          | ✅      | Mouse enter/leave        |
+| **trigger: click**               | ✅     | ✅          | ✅      | Click to toggle          |
+| **trigger: focus**               | ✅     | 🚧         | 🚧     | Implementation pending   |
+| **trigger: contextMenu**         | ✅     | ✅          | ✅      | Long press               |
+| **arrow (boolean)**              | ✅     | ✅          | ✅      | Show/hide arrow          |
+| **arrow (config)**               | ✅     | ✅          | ✅      | TooltipArrowConfig       |
+| **arrowPointAtCenter**           | ✅     | ✅          | ✅      | Deprecated in both       |
+| **autoAdjustOverflow (boolean)** | ✅     | ✅          | ✅      | Auto position adjust     |
+| **autoAdjustOverflow (config)**  | ✅     | ✅          | ✅      | AdjustOverflow config    |
+| **color**                        | ✅     | ✅          | ✅      | Custom background        |
+| **destroyTooltipOnHide**         | ✅     | ✅          | ✅      | Unmount when hidden      |
+| **fresh**                        | ✅     | ✅          | ✅      | Force re-render          |
+| **getPopupContainer**            | ✅     | 🚧         | 🚧     | Partial implementation   |
+| **mouseEnterDelay**              | ✅     | ✅          | ✅      | Delay before show        |
+| **mouseLeaveDelay**              | ✅     | ✅          | ✅      | Delay before hide        |
+| **overlayClassName**             | ✅     | ✅          | ✅      | Root class name          |
+| **overlayStyle**                 | ✅     | ✅          | ✅      | Root styles (Modifier)   |
+| **overlayInnerStyle**            | ✅     | ✅          | ✅      | Body styles (Modifier)   |
+| **zIndex**                       | ✅     | ✅          | ✅      | Stacking order           |
+| **styles.root**                  | ✅     | ✅          | ✅      | Semantic root styles     |
+| **styles.body**                  | ✅     | ✅          | ✅      | Semantic body styles     |
+| **classNames.root**              | ✅     | ✅          | ✅      | Semantic root class      |
+| **classNames.body**              | ✅     | ✅          | ✅      | Semantic body class      |
+| **openClassName**                | ✅     | ✅          | ✅      | Class when open          |
+| **afterOpenChange**              | ✅     | ✅          | ✅      | Post-animation callback  |
+| **align**                        | ✅     | 🚧         | 🚧     | Partial implementation   |
+| **Animation**                    | ✅     | ✅          | ✅      | Fade + scale             |
+| **Arrow rendering**              | ✅     | ✅          | ✅      | Canvas/SVG based         |
 
 **Legend:**
+
 - ✅ Fully implemented
 - 🚧 Partially implemented / Pending
 - ❌ Not implemented
@@ -52,6 +54,7 @@ This document provides a detailed comparison between React Ant Design Tooltip an
 ## Score: 32/35 (91.4%) Core Features + 3 Pending
 
 The 3 pending features are:
+
 1. **trigger: focus** - Requires focus management system
 2. **getPopupContainer** - Portal-like mounting (advanced feature)
 3. **align** - Custom alignment config (advanced positioning)
@@ -63,6 +66,7 @@ These are advanced features that don't impact core functionality.
 ### 1. Basic Parameters
 
 #### React:
+
 ```tsx
 <Tooltip
   title="text"
@@ -75,6 +79,7 @@ These are advanced features that don't impact core functionality.
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(
     title = "text",
@@ -89,6 +94,7 @@ AntTooltip(
 ### 2. Placement
 
 #### React:
+
 ```tsx
 <Tooltip placement="top">...</Tooltip>
 <Tooltip placement="topLeft">...</Tooltip>
@@ -97,6 +103,7 @@ AntTooltip(
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(placement = TooltipPlacement.Top) { }
 AntTooltip(placement = TooltipPlacement.TopLeft) { }
@@ -107,6 +114,7 @@ AntTooltip(placement = TooltipPlacement.TopRight) { }
 ### 3. Arrow Configuration
 
 #### React:
+
 ```tsx
 <Tooltip arrow={true}>...</Tooltip>
 <Tooltip arrow={false}>...</Tooltip>
@@ -114,6 +122,7 @@ AntTooltip(placement = TooltipPlacement.TopRight) { }
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(arrow = true) { }
 AntTooltip(arrow = false) { }
@@ -123,6 +132,7 @@ AntTooltip(arrow = TooltipArrowConfig(show = true, pointAtCenter = true)) { }
 ### 4. Triggers
 
 #### React:
+
 ```tsx
 <Tooltip trigger="hover">...</Tooltip>
 <Tooltip trigger="click">...</Tooltip>
@@ -131,6 +141,7 @@ AntTooltip(arrow = TooltipArrowConfig(show = true, pointAtCenter = true)) { }
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(trigger = TooltipTrigger.Hover) { }
 AntTooltip(trigger = TooltipTrigger.Click) { }
@@ -141,11 +152,13 @@ AntTooltip(trigger = TooltipTrigger.ContextMenu) { }
 ### 5. Delays
 
 #### React:
+
 ```tsx
 <Tooltip mouseEnterDelay={0.5} mouseLeaveDelay={0.1}>...</Tooltip>
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(mouseEnterDelay = 500, mouseLeaveDelay = 100) { }
 ```
@@ -155,12 +168,14 @@ AntTooltip(mouseEnterDelay = 500, mouseLeaveDelay = 100) { }
 ### 6. Custom Colors
 
 #### React:
+
 ```tsx
 <Tooltip color="#f50">...</Tooltip>
 <Tooltip color="pink">...</Tooltip>
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(color = Color(0xFFFF5050)) { }
 AntTooltip(color = Color(0xFFEB2F96)) { }
@@ -169,6 +184,7 @@ AntTooltip(color = Color(0xFFEB2F96)) { }
 ### 7. Custom Styles
 
 #### React:
+
 ```tsx
 <Tooltip
   overlayStyle={{ borderRadius: 12 }}
@@ -181,6 +197,7 @@ AntTooltip(color = Color(0xFFEB2F96)) { }
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(
     overlayStyle = Modifier.background(Color.Red, RoundedCornerShape(12.dp)),
@@ -195,6 +212,7 @@ AntTooltip(
 ### 8. Auto Adjust Overflow
 
 #### React:
+
 ```tsx
 <Tooltip autoAdjustOverflow={true}>...</Tooltip>
 <Tooltip autoAdjustOverflow={false}>...</Tooltip>
@@ -202,6 +220,7 @@ AntTooltip(
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(autoAdjustOverflow = true) { }
 AntTooltip(autoAdjustOverflow = false) { }
@@ -211,6 +230,7 @@ AntTooltip(autoAdjustOverflow = AdjustOverflow(adjustX = true, adjustY = false))
 ### 9. Lifecycle & Performance
 
 #### React:
+
 ```tsx
 <Tooltip
   destroyTooltipOnHide={true}
@@ -220,6 +240,7 @@ AntTooltip(autoAdjustOverflow = AdjustOverflow(adjustX = true, adjustY = false))
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(
     destroyTooltipOnHide = true,
@@ -231,6 +252,7 @@ AntTooltip(
 ### 10. Z-Index & Container
 
 #### React:
+
 ```tsx
 <Tooltip
   zIndex={2000}
@@ -239,6 +261,7 @@ AntTooltip(
 ```
 
 #### Kotlin:
+
 ```kotlin
 AntTooltip(
     zIndex = 2000,
@@ -251,11 +274,13 @@ AntTooltip(
 ### Type Safety
 
 **React (JavaScript/TypeScript):**
+
 - String-based placements: `"top"`, `"topLeft"`, etc.
 - String-based triggers: `"hover"`, `"click"`, etc.
 - Loose typing for arrow config
 
 **Kotlin (Type-Safe):**
+
 - Enum-based placements: `TooltipPlacement.Top`, `TooltipPlacement.TopLeft`
 - Enum-based triggers: `TooltipTrigger.Hover`, `TooltipTrigger.Click`
 - Sealed types for arrow config
@@ -263,20 +288,24 @@ AntTooltip(
 ### Styling Approach
 
 **React:**
+
 - CSS-in-JS
 - Style objects: `{ background: 'red', padding: 10 }`
 
 **Kotlin:**
+
 - Compose Modifiers
 - Chained modifiers: `.background(Color.Red).padding(10.dp)`
 
 ### Animation
 
 **React:**
+
 - rc-motion library
 - CSS transitions
 
 **Kotlin:**
+
 - Compose AnimatedVisibility
 - MutableTransitionState
 - Native Compose animations
@@ -284,10 +313,12 @@ AntTooltip(
 ### Event Handling
 
 **React:**
+
 - React synthetic events
 - `onMouseEnter`, `onMouseLeave`
 
 **Kotlin:**
+
 - Compose pointer input
 - `pointerInput` with `awaitPointerEventScope`
 
@@ -309,21 +340,23 @@ AntTooltip(
 
 ## Performance Comparison
 
-| Aspect | React | Kotlin |
-|--------|-------|--------|
-| **Initial render** | ~5ms | ~3ms |
-| **Animation** | CSS transitions | Compose animations |
-| **Memory** | Virtual DOM overhead | Direct composition |
-| **Bundle size** | ~15KB (gzipped) | Included in Compose |
+| Aspect             | React                | Kotlin              |
+|--------------------|----------------------|---------------------|
+| **Initial render** | ~5ms                 | ~3ms                |
+| **Animation**      | CSS transitions      | Compose animations  |
+| **Memory**         | Virtual DOM overhead | Direct composition  |
+| **Bundle size**    | ~15KB (gzipped)      | Included in Compose |
 
 ## Testing Coverage
 
 ### React Tests (Ant Design)
+
 - ~50 unit tests
 - Snapshot tests
 - Integration tests
 
 ### Kotlin Tests (This Implementation)
+
 - Manual testing via examples
 - 15+ interactive examples
 - All features demonstrated
@@ -338,7 +371,7 @@ AntTooltip(
    ```
    →
    ```kotlin
-   import com.antdesign.ui.AntTooltip
+   import digital.guimauve.antdesign.AntTooltip
    ```
 
 2. **Convert placement strings to enums:**
@@ -384,12 +417,14 @@ AntTooltip(
 ## Code Size Comparison
 
 ### React Implementation
+
 - **index.tsx**: ~400 lines
 - **style/index.ts**: ~300 lines
 - **PurePanel.tsx**: ~100 lines
 - **Total**: ~800 lines
 
 ### Kotlin Implementation
+
 - **Tooltip.kt**: ~575 lines
 - **TooltipExamples.kt**: ~380 lines (examples)
 - **Total core**: ~575 lines
@@ -399,6 +434,7 @@ AntTooltip(
 ## Browser/Platform Support
 
 ### React
+
 - ✅ Chrome
 - ✅ Firefox
 - ✅ Safari
@@ -407,6 +443,7 @@ AntTooltip(
 - ❌ Desktop (Electron needed)
 
 ### Kotlin
+
 - ✅ Android
 - ✅ iOS
 - ✅ Desktop (Windows, macOS, Linux)
@@ -417,12 +454,14 @@ AntTooltip(
 ## Known Limitations
 
 ### React
+
 1. Requires DOM
 2. Limited to web platform
 3. Bundle size overhead
 4. Runtime type checking
 
 ### Kotlin
+
 1. Focus trigger incomplete
 2. getPopupContainer partial
 3. Web support pending
@@ -431,18 +470,21 @@ AntTooltip(
 ## Future Roadmap
 
 ### Short Term (v1.1)
+
 - ✅ Complete focus trigger
 - ✅ Full getPopupContainer support
 - ✅ Custom align configuration
 - ✅ RTL support
 
 ### Medium Term (v1.2)
+
 - ✅ Theme integration
 - ✅ Accessibility improvements
 - ✅ Performance optimizations
 - ✅ More comprehensive tests
 
 ### Long Term (v2.0)
+
 - ✅ Compose for Web support
 - ✅ Advanced positioning engine
 - ✅ Animation customization
@@ -450,7 +492,8 @@ AntTooltip(
 
 ## Conclusion
 
-The Kotlin Multiplatform implementation achieves **100% core feature parity** with React Ant Design Tooltip, with only 3 advanced features pending:
+The Kotlin Multiplatform implementation achieves **100% core feature parity** with React Ant Design Tooltip, with only 3
+advanced features pending:
 
 1. ✅ All 12 placements
 2. ✅ All trigger modes (except focus)
@@ -469,6 +512,7 @@ The Kotlin Multiplatform implementation achieves **100% core feature parity** wi
 15. ✅ Semantic styles
 
 The implementation is:
+
 - **Type-safe** with enums instead of strings
 - **Smaller** (~30% less code)
 - **Cross-platform** (Android, iOS, Desktop, Web)
@@ -480,7 +524,7 @@ The implementation is:
 - [React Ant Design Tooltip](https://ant.design/components/tooltip)
 - [rc-tooltip source](https://github.com/react-component/tooltip)
 - [Compose Popup docs](https://developer.android.com/jetpack/compose/components/popup)
-- [This implementation](../ui/src/commonMain/kotlin/com/antdesign/ui/Tooltip.kt)
+- [This implementation](../ui/src/commonMain/kotlin/digital/guimauve/antdesign/Tooltip.kt)
 
 ---
 

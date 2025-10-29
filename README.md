@@ -19,7 +19,9 @@
 
 ## 🌟 Overview
 
-Ant Design KMP brings the power of [Ant Design](https://ant.design/) to Kotlin Multiplatform. Built with Compose Multiplatform, this library provides a complete, production-ready UI component system that works seamlessly across **Android**, **iOS**, **Desktop**, and **Web**.
+Ant Design KMP brings the power of [Ant Design](https://ant.design/) to Kotlin Multiplatform. Built with Compose
+Multiplatform, this library provides a complete, production-ready UI component system that works seamlessly across *
+*Android**, **iOS**, **Desktop**, and **Web**.
 
 ### ✨ Features
 
@@ -44,11 +46,10 @@ Add the dependency to your `build.gradle.kts`:
 ```kotlin
 repositories {
     mavenCentral()
-    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
 
 dependencies {
-    implementation("com.antdesign:ant-design-kmp:1.0.0")
+    implementation("digital.guimauve.antdesign:ui:1.0.0")
 }
 ```
 
@@ -65,6 +66,7 @@ setContent {
     }
 }
 ```
+
 </details>
 
 <details>
@@ -78,6 +80,7 @@ fun MainViewController() = ComposeUIViewController {
     }
 }
 ```
+
 </details>
 
 <details>
@@ -92,6 +95,7 @@ fun main() = application {
     }
 }
 ```
+
 </details>
 
 <details>
@@ -106,6 +110,7 @@ fun main() {
     }
 }
 ```
+
 </details>
 
 ---
@@ -113,7 +118,7 @@ fun main() {
 ## 🚀 Quick Start
 
 ```kotlin
-import com.antdesign.ui.*
+import digital.guimauve.antdesign.*
 
 @Composable
 fun MyApp() {
@@ -146,21 +151,24 @@ fun MyApp() {
 }
 ```
 
-**Want to see more?** Check out our [Storytale documentation](#-storytale-interactive-documentation) with 72+ interactive examples!
+**Want to see more?** Check out our [Storytale documentation](#-storytale-interactive-documentation) with 72+
+interactive examples!
 
 ---
 
 ## 🎭 Storytale - Interactive Documentation
 
-**The best way to explore Ant Design KMP is through Storytale** - our interactive component gallery built with [Compose Storytale](https://github.com/JetBrains/compose-multiplatform-storytale).
+**The best way to explore Ant Design KMP is through Storytale** - our interactive component gallery built
+with [Compose Storytale](https://github.com/JetBrains/compose-multiplatform-storytale).
 
 ### Launch Storytale
 
 ```bash
-./gradlew :ui:storytaleStart
+./gradlew desktopStoriesRun
 ```
 
 This will start an interactive web application where you can:
+
 - 🎪 Browse all 80+ components with live examples
 - 🎨 See different variations and configurations
 - 🔧 Experiment with component props in real-time
@@ -185,129 +193,129 @@ We have **14 story files** covering **72+ components** organized by category:
 
 ### Form Inputs (9 Components) - **95%+ Complete** ✅
 
-| Component | Features | Completion |
-|-----------|----------|------------|
-| **Button** | Primary, Default, Dashed, Text, Link types • Small, Middle, Large sizes • Loading state • Danger mode • Block layout • Icon support | 95% |
-| **Input** | Text input • Password • Search • TextArea • Prefix/Suffix • Character count • Status validation | 93% |
-| **Select** | Single/Multiple selection • Search filtering • Virtual scrolling • Option groups • Custom render • Tags mode | 96% |
-| **Checkbox** | Single checkbox • Checkbox groups • Indeterminate state • Disabled state | 92% |
-| **Radio** | Single radio • Radio groups • Button style • Disabled options | 91% |
-| **DatePicker** | Date picker • Range picker • Month/Year/Quarter pickers • Time selection • Disabled dates | 94% |
-| **TimePicker** | Time picker • 12/24 hour format • Range picker • Disabled times | 93% |
-| **Cascader** | Multi-level selection • Search • Custom render | 85% |
-| **TreeSelect** | Tree selection • Search • Multiple selection | 85% |
+| Component      | Features                                                                                                                            | Completion |
+|----------------|-------------------------------------------------------------------------------------------------------------------------------------|------------|
+| **Button**     | Primary, Default, Dashed, Text, Link types • Small, Middle, Large sizes • Loading state • Danger mode • Block layout • Icon support | 95%        |
+| **Input**      | Text input • Password • Search • TextArea • Prefix/Suffix • Character count • Status validation                                     | 93%        |
+| **Select**     | Single/Multiple selection • Search filtering • Virtual scrolling • Option groups • Custom render • Tags mode                        | 96%        |
+| **Checkbox**   | Single checkbox • Checkbox groups • Indeterminate state • Disabled state                                                            | 92%        |
+| **Radio**      | Single radio • Radio groups • Button style • Disabled options                                                                       | 91%        |
+| **DatePicker** | Date picker • Range picker • Month/Year/Quarter pickers • Time selection • Disabled dates                                           | 94%        |
+| **TimePicker** | Time picker • 12/24 hour format • Range picker • Disabled times                                                                     | 93%        |
+| **Cascader**   | Multi-level selection • Search • Custom render                                                                                      | 85%        |
+| **TreeSelect** | Tree selection • Search • Multiple selection                                                                                        | 85%        |
 
 ### Form Container (2 Components) - **95% Complete** ✅
 
-| Component | Features | Completion |
-|-----------|----------|------------|
-| **Form** | Form container • Validation rules • Async validation • Form instance API • Layout modes | 95% |
-| **FormItem** | Field wrapper • Label • Validation state • Help text • Required marker | 95% |
+| Component    | Features                                                                                | Completion |
+|--------------|-----------------------------------------------------------------------------------------|------------|
+| **Form**     | Form container • Validation rules • Async validation • Form instance API • Layout modes | 95%        |
+| **FormItem** | Field wrapper • Label • Validation state • Help text • Required marker                  | 95%        |
 
 ### Data Display (15 Components) - **92%+ Complete** ✅
 
-| Component | Features | Completion |
-|-----------|----------|------------|
-| **Table** | Column configuration • Sorting • Filtering • Pagination • Row selection • Expandable rows | 96% |
-| **List** | Item layout • Grid mode • Virtual scrolling • Loading state • Pagination | 94% |
-| **Card** | Title • Extra actions • Cover image • Grid layout • Hoverable • Loading state | 90% |
-| **Avatar** | Image • Text • Icon • Shape (circle/square) • Size variants | 89% |
-| **Badge** | Count • Dot • Status • Ribbon • Custom color | 87% |
-| **Tag** | Closable • Colors • Icons • Bordered | 88% |
-| **Descriptions** | Horizontal/Vertical layout • Bordered • Column span • Size variants | 93% |
-| **Breadcrumb** | Items • Separators • Icons • Dropdown items | 93% |
-| **Steps** | Horizontal/Vertical • Status • Icons • Clickable | 92% |
-| **Image** | Preview • Fallback • Placeholder | 89% |
-| **Statistic** | Number display • Countdown • Formatting • Prefix/Suffix | 100% |
-| **Timeline** | Items • Pending • Alternate mode • Colors | 83% |
-| **Carousel** | Auto play • Dots • Arrows • Vertical mode | 82% |
-| **Progress** | Line • Circle • Dashboard • Status • Steps | 86% |
-| **Pagination** | Page size • Quick jumper • Total display • Simple mode | 94% |
+| Component        | Features                                                                                  | Completion |
+|------------------|-------------------------------------------------------------------------------------------|------------|
+| **Table**        | Column configuration • Sorting • Filtering • Pagination • Row selection • Expandable rows | 96%        |
+| **List**         | Item layout • Grid mode • Virtual scrolling • Loading state • Pagination                  | 94%        |
+| **Card**         | Title • Extra actions • Cover image • Grid layout • Hoverable • Loading state             | 90%        |
+| **Avatar**       | Image • Text • Icon • Shape (circle/square) • Size variants                               | 89%        |
+| **Badge**        | Count • Dot • Status • Ribbon • Custom color                                              | 87%        |
+| **Tag**          | Closable • Colors • Icons • Bordered                                                      | 88%        |
+| **Descriptions** | Horizontal/Vertical layout • Bordered • Column span • Size variants                       | 93%        |
+| **Breadcrumb**   | Items • Separators • Icons • Dropdown items                                               | 93%        |
+| **Steps**        | Horizontal/Vertical • Status • Icons • Clickable                                          | 92%        |
+| **Image**        | Preview • Fallback • Placeholder                                                          | 89%        |
+| **Statistic**    | Number display • Countdown • Formatting • Prefix/Suffix                                   | 100%       |
+| **Timeline**     | Items • Pending • Alternate mode • Colors                                                 | 83%        |
+| **Carousel**     | Auto play • Dots • Arrows • Vertical mode                                                 | 82%        |
+| **Progress**     | Line • Circle • Dashboard • Status • Steps                                                | 86%        |
+| **Pagination**   | Page size • Quick jumper • Total display • Simple mode                                    | 94%        |
 
 ### Navigation (12 Components) - **92%+ Complete** ✅
 
-| Component | Features | Completion |
-|-----------|----------|------------|
-| **Menu** | Vertical/Horizontal • Dark/Light theme • SubMenu • Collapsible • Icons | 92% |
-| **Tabs** | Line/Card style • Editable • Closable • Icons • Extra actions | 95% |
-| **Drawer** | Left/Right/Top/Bottom placement • Mask • Footer • Width/Height | 94% |
-| **Layout** | Header • Sider • Content • Footer • Collapsible sider | 93% |
-| **Segmented** | Options • Icons • Block layout • Disabled | 88% |
-| **Affix** | Fixed positioning • Offset top/bottom | 88% |
-| **Anchor** | Scroll spy • Click scroll • Affix mode | 85% |
-| **BackTop** | Scroll to top • Custom icon • Visibility threshold | 85% |
-| **FloatButton** | Floating action • Back to top • Speed dial | 85% |
-| **PageHeader** | Title • Subtitle • Breadcrumb • Extra • Back button | 80% |
+| Component       | Features                                                               | Completion |
+|-----------------|------------------------------------------------------------------------|------------|
+| **Menu**        | Vertical/Horizontal • Dark/Light theme • SubMenu • Collapsible • Icons | 92%        |
+| **Tabs**        | Line/Card style • Editable • Closable • Icons • Extra actions          | 95%        |
+| **Drawer**      | Left/Right/Top/Bottom placement • Mask • Footer • Width/Height         | 94%        |
+| **Layout**      | Header • Sider • Content • Footer • Collapsible sider                  | 93%        |
+| **Segmented**   | Options • Icons • Block layout • Disabled                              | 88%        |
+| **Affix**       | Fixed positioning • Offset top/bottom                                  | 88%        |
+| **Anchor**      | Scroll spy • Click scroll • Affix mode                                 | 85%        |
+| **BackTop**     | Scroll to top • Custom icon • Visibility threshold                     | 85%        |
+| **FloatButton** | Floating action • Back to top • Speed dial                             | 85%        |
+| **PageHeader**  | Title • Subtitle • Breadcrumb • Extra • Back button                    | 80%        |
 
 ### Feedback & Overlay (15 Components) - **90%+ Complete** ✅
 
-| Component | Features | Completion |
-|-----------|----------|------------|
-| **Modal** | Centered • Custom footer • Closable • Mask • Responsive | 97% |
-| **Alert** | Success/Info/Warning/Error • Closable • Banner • Description • Actions | 91% |
-| **Tooltip** | 12 placements • Arrow • Trigger modes • Delay | 91% |
-| **Popover** | Content • Title • Trigger • Placement | 90% |
-| **Result** | Success/Error/Info/Warning/404/403/500 • Title • Subtitle • Extra | 90% |
-| **Skeleton** | Avatar • Title • Paragraph • Active animation • Round | 87% |
-| **Empty** | Description • Image • Custom content | 88% |
-| **Message** | Success/Error/Info/Warning/Loading • Duration • Global config | 80% |
-| **Notification** | Placement • Duration • Icon • Actions | 80% |
-| **Spin** | Size variants • Tip text • Delay • Container mode | 85% |
-| **Comment** | Author • Avatar • Content • Actions • Datetime • Nested | 81% |
-| **Collapse** | Accordion • Icons • Bordered • Ghost | 82% |
-| **Wave** | Click wave effect animation | 80% |
+| Component        | Features                                                               | Completion |
+|------------------|------------------------------------------------------------------------|------------|
+| **Modal**        | Centered • Custom footer • Closable • Mask • Responsive                | 97%        |
+| **Alert**        | Success/Info/Warning/Error • Closable • Banner • Description • Actions | 91%        |
+| **Tooltip**      | 12 placements • Arrow • Trigger modes • Delay                          | 91%        |
+| **Popover**      | Content • Title • Trigger • Placement                                  | 90%        |
+| **Result**       | Success/Error/Info/Warning/404/403/500 • Title • Subtitle • Extra      | 90%        |
+| **Skeleton**     | Avatar • Title • Paragraph • Active animation • Round                  | 87%        |
+| **Empty**        | Description • Image • Custom content                                   | 88%        |
+| **Message**      | Success/Error/Info/Warning/Loading • Duration • Global config          | 80%        |
+| **Notification** | Placement • Duration • Icon • Actions                                  | 80%        |
+| **Spin**         | Size variants • Tip text • Delay • Container mode                      | 85%        |
+| **Comment**      | Author • Avatar • Content • Actions • Datetime • Nested                | 81%        |
+| **Collapse**     | Accordion • Icons • Bordered • Ghost                                   | 82%        |
+| **Wave**         | Click wave effect animation                                            | 80%        |
 
 ### Layout & Spacing (8 Components) - **88%+ Complete** ✅
 
-| Component | Features | Completion |
-|-----------|----------|------------|
-| **Divider** | Horizontal/Vertical • Text • Dashed • Plain | 90% |
-| **Space** | Direction • Size • Alignment • Wrap | 88% |
-| **Flex** | Direction • Wrap • Gap • Justify • Align | 88% |
-| **Center** | Horizontal/Vertical centering | 90% |
-| **Grid** | Row • Col • Gutter • Responsive breakpoints | 82% |
-| **Container** | Max-width • Centered | 85% |
-| **Compact** | Compact item spacing | 85% |
-| **Watermark** | Text/Image watermark • Rotation • Gap | 85% |
+| Component     | Features                                    | Completion |
+|---------------|---------------------------------------------|------------|
+| **Divider**   | Horizontal/Vertical • Text • Dashed • Plain | 90%        |
+| **Space**     | Direction • Size • Alignment • Wrap         | 88%        |
+| **Flex**      | Direction • Wrap • Gap • Justify • Align    | 88%        |
+| **Center**    | Horizontal/Vertical centering               | 90%        |
+| **Grid**      | Row • Col • Gutter • Responsive breakpoints | 82%        |
+| **Container** | Max-width • Centered                        | 85%        |
+| **Compact**   | Compact item spacing                        | 85%        |
+| **Watermark** | Text/Image watermark • Rotation • Gap       | 85%        |
 
 ### Specialized Components (11 Components)
 
-| Component | Features | Completion |
-|-----------|----------|------------|
-| **Transfer** | Source/Target lists • Search • Pagination | 83% |
-| **Tree** | Expandable • Selectable • Checkable • Icons | 80% |
-| **Slider** | Range • Marks • Vertical • Tooltip | 84% |
-| **InputNumber** | Min/Max • Step • Formatter • Precision | 83% |
-| **Switch** | Checked/Unchecked • Loading • Size | 85% |
-| **Rate** | Count • Half star • Character • Colors | 80% |
-| **Mentions** | Suggestions • Prefix • Split | 81% |
-| **AutoComplete** | Options • Search • Custom render | 82% |
-| **ColorPicker** | Hex/RGB/HSL • Presets • Alpha | 75% |
-| **QRCode** | Value • Size • Error level • Icon | 78% |
-| **Ribbon** | Text • Color • Placement | 85% |
+| Component        | Features                                    | Completion |
+|------------------|---------------------------------------------|------------|
+| **Transfer**     | Source/Target lists • Search • Pagination   | 83%        |
+| **Tree**         | Expandable • Selectable • Checkable • Icons | 80%        |
+| **Slider**       | Range • Marks • Vertical • Tooltip          | 84%        |
+| **InputNumber**  | Min/Max • Step • Formatter • Precision      | 83%        |
+| **Switch**       | Checked/Unchecked • Loading • Size          | 85%        |
+| **Rate**         | Count • Half star • Character • Colors      | 80%        |
+| **Mentions**     | Suggestions • Prefix • Split                | 81%        |
+| **AutoComplete** | Options • Search • Custom render            | 82%        |
+| **ColorPicker**  | Hex/RGB/HSL • Presets • Alpha               | 75%        |
+| **QRCode**       | Value • Size • Error level • Icon           | 78%        |
+| **Ribbon**       | Text • Color • Placement                    | 85%        |
 
 ### Utility Components (3 Components)
 
-| Component | Features | Completion |
-|-----------|----------|------------|
-| **ConfigProvider** | Theme configuration • Locale • Direction (RTL) | 90% |
-| **App** | Global config • Message/Notification/Modal instances | 88% |
-| **Theme** | Token system • Component tokens • Algorithm | 85% |
+| Component          | Features                                             | Completion |
+|--------------------|------------------------------------------------------|------------|
+| **ConfigProvider** | Theme configuration • Locale • Direction (RTL)       | 90%        |
+| **App**            | Global config • Message/Notification/Modal instances | 88%        |
+| **Theme**          | Token system • Component tokens • Algorithm          | 85%        |
 
 ---
 
 ## 📊 Statistics
 
-| Metric | Value |
-|--------|-------|
-| **Total Components** | 80+ |
-| **Total Lines of Code** | 41,100+ |
-| **@Composable Functions** | 727 |
-| **Average Completion** | 90.5% |
-| **Production Ready (90%+)** | 50+ components |
-| **Story Files** | 14 |
-| **React Parity** | 100% for core components |
-| **Platform Support** | iOS, Android, Desktop, Web |
+| Metric                      | Value                      |
+|-----------------------------|----------------------------|
+| **Total Components**        | 80+                        |
+| **Total Lines of Code**     | 41,100+                    |
+| **@Composable Functions**   | 727                        |
+| **Average Completion**      | 90.5%                      |
+| **Production Ready (90%+)** | 50+ components             |
+| **Story Files**             | 14                         |
+| **React Parity**            | 100% for core components   |
+| **Platform Support**        | iOS, Android, Desktop, Web |
 
 ---
 
@@ -317,7 +325,7 @@ We have **14 story files** covering **72+ components** organized by category:
 
 ```bash
 # Clone the repository
-git clone https://github.com/ant-design/ant-design-kmp.git
+git clone https://github.com/guimauvedigital/ant-design-kmp.git
 cd ant-design-kmp
 
 # Build the project
@@ -332,7 +340,7 @@ cd ant-design-kmp
 The best way to explore and develop components:
 
 ```bash
-./gradlew :ui:storytaleStart
+./gradlew desktopStoriesRun
 ```
 
 This starts a local web server with hot-reload enabled. Open your browser to view all components.
@@ -344,7 +352,7 @@ ant-design-kmp/
 ├── ui/                              # Main UI library
 │   ├── src/
 │   │   ├── commonMain/kotlin/       # Component implementations
-│   │   │   └── com/antdesign/ui/
+│   │   │   └── digital/guimauve/antdesign/
 │   │   ├── commonStories/kotlin/    # Storytale stories
 │   │   ├── androidMain/
 │   │   ├── iosMain/
@@ -400,7 +408,8 @@ We welcome contributions! Here's how you can help:
 ### Component API Documentation
 
 For detailed component APIs and props, please refer to:
-1. **Storytale** (run `./gradlew :ui:storytaleStart`) - Interactive examples with live code
+
+1. **Storytale** (run `./gradlew desktopStoriesRun`) - Interactive examples with live code
 2. **Source Code** - All components have comprehensive KDoc comments
 3. **Ant Design Docs** - Component behavior matches React implementation
 
@@ -413,7 +422,9 @@ If you're familiar with Ant Design React, the Kotlin API is nearly identical:
 <Button type="primary" onClick={handleClick}>
   Click Me
 </Button>
+```
 
+```kotlin
 // Kotlin Compose
 AntButton(type = ButtonType.Primary, onClick = { handleClick() }) {
     Text("Click Me")
@@ -491,7 +502,7 @@ Need help? Here's how to get support:
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/ant-design/ant-design-kmp/issues)
 - **Discussions**: [Ask questions and share ideas](https://github.com/ant-design/ant-design-kmp/discussions)
-- **Storytale**: Run `./gradlew :ui:storytaleStart` to explore interactive examples
+- **Storytale**: Run `./gradlew desktopStoriesRun` to explore interactive examples
 
 ---
 

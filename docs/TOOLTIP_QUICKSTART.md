@@ -5,9 +5,9 @@
 The Tooltip component is part of the Ant Design KMP library. No additional dependencies required.
 
 ```kotlin
-import com.antdesign.ui.AntTooltip
-import com.antdesign.ui.TooltipPlacement
-import com.antdesign.ui.TooltipTrigger
+import digital.guimauve.antdesign.AntTooltip
+import digital.guimauve.antdesign.TooltipPlacement
+import digital.guimauve.antdesign.TooltipTrigger
 ```
 
 ## 5-Minute Quick Start
@@ -263,20 +263,20 @@ AntTooltip(
 
 ## Cheat Sheet
 
-| Need | Parameter | Example |
-|------|-----------|---------|
-| Position | `placement` | `TooltipPlacement.Bottom` |
-| How to show | `trigger` | `TooltipTrigger.Click` |
-| Custom color | `color` | `Color(0xFF1890FF)` |
-| Control state | `open` + `onOpenChange` | `open = isOpen` |
-| Delay show | `mouseEnterDelay` | `500` (ms) |
-| Delay hide | `mouseLeaveDelay` | `200` (ms) |
-| No arrow | `arrow` | `false` |
-| Custom style | `overlayStyle` | `Modifier.shadow(4.dp)` |
-| Destroy | `destroyTooltipOnHide` | `true` |
-| Re-render | `fresh` | `true` |
-| Z-index | `zIndex` | `2000` |
-| Callback | `onOpenChange` | `{ isOpen -> }` |
+| Need          | Parameter               | Example                   |
+|---------------|-------------------------|---------------------------|
+| Position      | `placement`             | `TooltipPlacement.Bottom` |
+| How to show   | `trigger`               | `TooltipTrigger.Click`    |
+| Custom color  | `color`                 | `Color(0xFF1890FF)`       |
+| Control state | `open` + `onOpenChange` | `open = isOpen`           |
+| Delay show    | `mouseEnterDelay`       | `500` (ms)                |
+| Delay hide    | `mouseLeaveDelay`       | `200` (ms)                |
+| No arrow      | `arrow`                 | `false`                   |
+| Custom style  | `overlayStyle`          | `Modifier.shadow(4.dp)`   |
+| Destroy       | `destroyTooltipOnHide`  | `true`                    |
+| Re-render     | `fresh`                 | `true`                    |
+| Z-index       | `zIndex`                | `2000`                    |
+| Callback      | `onOpenChange`          | `{ isOpen -> }`           |
 
 ## Tips & Tricks
 
@@ -368,7 +368,7 @@ destroyTooltipOnHide = true
 
 - Read the [Complete API Documentation](./TOOLTIP_API.md)
 - Check [React Comparison](./TOOLTIP_COMPARISON.md)
-- View [15+ Interactive Examples](../ui/src/commonMain/kotlin/com/antdesign/ui/TooltipExamples.kt)
+- View [15+ Interactive Examples](../ui/src/commonMain/kotlin/digital/guimauve/antdesign/TooltipExamples.kt)
 - Read [Completion Report](../TOOLTIP_COMPLETION_REPORT.md)
 
 ## Need Help?

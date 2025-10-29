@@ -1,0 +1,36 @@
+name: Docs
+on:
+  push:
+    branches: [ main ]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+jobs:
+  docs:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: Build Storytale
+        run: ./gradlew jsBrowserStoriesDevelopmentExecutableDistribution
+      - name: Add CNAME
+        run: echo "antdesign.guimauve.digital" > ui/build/dist/js/StoriesDevelopmentExecutable/CNAME
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ui/build/dist/js/StoriesDevelopmentExecutable
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

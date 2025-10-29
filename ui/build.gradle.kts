@@ -12,16 +12,12 @@ plugins {
 }
 
 mavenPublishing {
-    publishing {
-        repositories {
-            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
-        }
-    }
+    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
     pom {
         name.set("ant-design-kmp")
         description.set("Ant Design components for Kotlin Multiplatform.")
-        url.set("https://github.com/ant-design/ant-design-kmp")
+        url.set("https://github.com/guimauvedigital/ant-design-kmp")
 
         licenses {
             license {
@@ -31,13 +27,13 @@ mavenPublishing {
         }
         developers {
             developer {
-                id.set("ant-design")
-                name.set("Ant Design Team")
-                email.set("contact@antdesign.com")
+                id.set("lyesbcb")
+                name.set("Lyes Benchoubane")
+                email.set("lyes@guimauve.digital")
             }
         }
         scm {
-            url.set("https://github.com/ant-design/ant-design-kmp.git")
+            url.set("https://github.com/guimauvedigital/ant-design-kmp.git")
         }
     }
 }
@@ -51,7 +47,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "AntDesignUI"
             isStatic = true
-            binaryOption("bundleId", "com.antdesign.ui")
+            binaryOption("bundleId", "digital.guimauve.antdesign")
         }
     }
 
@@ -129,7 +125,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.antdesign.ui"
+    namespace = "digital.guimauve.antdesign"
     compileSdk = 35
 
     buildFeatures {
@@ -151,7 +147,7 @@ android {
 
 compose.resources {
     publicResClass = true
-    packageOfResClass = "com.antdesign.ui"
+    packageOfResClass = "digital.guimauve.antdesign"
 }
 
 compose.desktop {
@@ -160,7 +156,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.antdesign.ui"
+            packageName = "digital.guimauve.antdesign"
             packageVersion = "1.0.0"
         }
     }
