@@ -4,7 +4,7 @@
 
 **A comprehensive Kotlin Multiplatform implementation of Ant Design**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/ant-design/ant-design-kmp)
+[![Maven Central Version](https://img.shields.io/maven-central/v/digital.guimauve.antdesign/ui)](https://klibs.io/project/guimauvedigital/ant-design-kmp)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.0+-purple.svg)](https://kotlinlang.org)
 [![Compose](https://img.shields.io/badge/compose-multiplatform-orange.svg)](https://www.jetbrains.com/lp/compose-multiplatform/)
