@@ -1,6 +1,5 @@
 package digital.guimauve.antdesign
 
-import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -36,7 +35,10 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import kotlinx.coroutines.delay
+import kotlin.math.PI
 import kotlin.math.ceil
+import kotlin.math.cos
+import kotlin.math.sin
 
 /**
  * RateClassNames - Semantic class names for Rate component parts
@@ -522,16 +524,16 @@ private fun createStarPath(size: Size): Path {
 
         // Draw 5 points of the star
         for (i in 0 until 5) {
-            val angle1 = Math.PI / 2 + (2 * Math.PI * i / 5)
-            val angle2 = angle1 + Math.PI / 5
+            val angle1 = PI / 2 + (2 * PI * i / 5)
+            val angle2 = angle1 + PI / 5
 
             // Outer point
-            val x1 = (centerX + outerRadius * Math.cos(angle1)).toFloat()
-            val y1 = (centerY - outerRadius * Math.sin(angle1)).toFloat()
+            val x1 = (centerX + outerRadius * cos(angle1)).toFloat()
+            val y1 = (centerY - outerRadius * sin(angle1)).toFloat()
 
             // Inner point
-            val x2 = (centerX + innerRadius * Math.cos(angle2)).toFloat()
-            val y2 = (centerY - innerRadius * Math.sin(angle2)).toFloat()
+            val x2 = (centerX + innerRadius * cos(angle2)).toFloat()
+            val y2 = (centerY - innerRadius * sin(angle2)).toFloat()
 
             if (i == 0) {
                 lineTo(x2, y2)

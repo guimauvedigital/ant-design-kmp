@@ -3,15 +3,19 @@ package digital.guimauve.antdesign
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import digital.guimauve.antdesign.*
 import org.jetbrains.compose.storytale.story
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 // ============================================================================
 // TABLE - Complete Story with ALL Parameters
@@ -1537,6 +1541,7 @@ val ImageComplete by story {
 // STATISTIC - Complete Story with ALL Parameters
 // ============================================================================
 
+@ExperimentalTime
 val StatisticComplete by story {
     val value by parameter(112893)
     val precision by parameter(2)
@@ -1645,7 +1650,7 @@ val StatisticComplete by story {
             modifier = Modifier.fillMaxWidth()
         ) {
             AntStatisticCountdown(
-                value = System.currentTimeMillis() + 2 * 24 * 60 * 60 * 1000,
+                value = Clock.System.now().toEpochMilliseconds() + 2 * 24 * 60 * 60 * 1000,
                 title = { Text("Countdown") },
                 format = "HH:mm:ss",
                 onFinish = {
@@ -1654,7 +1659,7 @@ val StatisticComplete by story {
             )
 
             AntStatisticCountdown(
-                value = System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 3,
+                value = Clock.System.now().toEpochMilliseconds() + 1000 * 60 * 60 * 24 * 3,
                 title = { Text("Million Seconds") },
                 format = "DD:HH:mm:ss",
                 suffix = {

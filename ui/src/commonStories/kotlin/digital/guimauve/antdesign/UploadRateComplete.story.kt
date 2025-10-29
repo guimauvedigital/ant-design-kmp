@@ -3,18 +3,23 @@ package digital.guimauve.antdesign
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import digital.guimauve.antdesign.*
 import org.jetbrains.compose.storytale.story
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 // ==================== UPLOAD COMPLETE ====================
 
+@OptIn(ExperimentalTime::class)
 val UploadComplete by story {
     // File list state
     var fileList by remember {
@@ -82,7 +87,7 @@ val UploadComplete by story {
             action = action,
             method = method,
             directory = directory,
-            data = mapOf("userId" to "123", "timestamp" to System.currentTimeMillis()),
+            data = mapOf("userId" to "123", "timestamp" to Clock.System.now().toEpochMilliseconds()),
             headers = mapOf(
                 "Authorization" to "Bearer token123",
                 "X-Custom-Header" to "custom-value"

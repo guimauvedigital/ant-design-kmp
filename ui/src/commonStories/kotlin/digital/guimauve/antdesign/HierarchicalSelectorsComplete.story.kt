@@ -161,7 +161,7 @@ val CascaderComplete by story {
     }
 
     // State for value
-    var value by remember { mutableStateOf<Any>(emptyList<Any>()) }
+    var value by remember { mutableStateOf(emptyList<Any>()) }
     var openState by remember { mutableStateOf(false) }
 
     Column(
@@ -200,7 +200,7 @@ val CascaderComplete by story {
         AntCascader(
             // Required parameters
             options = baseOptions + loadingOptions,
-            value = if (value is List<*>) value as List<Any> else emptyList(),
+            value = value,
             onValueChange = { newValue ->
                 value = newValue
                 println("Value changed: $newValue")

@@ -1,6 +1,5 @@
 package digital.guimauve.antdesign
 
-import androidx.compose.animation.core.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
@@ -8,7 +7,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -756,7 +758,8 @@ private fun formatNumber(
         val rounded = round(value * multiplier) / multiplier
 
         // Format with fixed decimal places
-        val formatted = "%.${precision}f".format(rounded)
+        //val formatted = "%.${precision}f".format(rounded)
+        val formatted = rounded.toString() // TODO: Equivalent KMP of format()
         formatted.replace(".", decimalSeparator)
     } else {
         // No decimals
