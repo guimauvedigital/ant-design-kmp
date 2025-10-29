@@ -6,7 +6,7 @@ plugins {
 }
 
 allprojects {
-    group = "com.antdesign"
+    group = "digital.guimauve.antdesign"
     version = "1.0.0"
 
     repositories {
