@@ -10,6 +10,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -225,6 +226,8 @@ fun AntPagination(
 ) {
     val config = useConfig()
     val contextLocale = useLocale()
+    val theme = useTheme()
+    val paginationToken = theme.components.pagination
 
     // Merge custom locale with default English locale
     val effectiveLocale = locale ?: PaginationLocale()
@@ -363,6 +366,8 @@ private fun SimplePagination(
     styles: PaginationStyles?,
     onPageChange: (Int) -> Unit,
 ) {
+    val theme = useTheme()
+
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -388,7 +393,7 @@ private fun SimplePagination(
         Text(
             text = "$current / $totalPages",
             fontSize = if (size == PaginationSize.Small) 12.sp else 14.sp,
-            color = if (disabled) Color(0xFF00000040) else Color(0xFF000000D9)
+            color = if (disabled) theme.components.pagination.colorTextDisabled else theme.components.pagination.colorText
         )
 
         // Next button
@@ -472,8 +477,14 @@ private fun FullPagination(
 
         // Previous button
         val prevButton: @Composable () -> Unit = {
+            val theme = useTheme()
             PaginationButton(
-                content = prevIcon ?: { Text("<") },
+                content = prevIcon ?: {
+                    Text(
+                        "<",
+                        color = if (!disabled && current > 1) theme.components.pagination.colorText else theme.components.pagination.colorTextDisabled
+                    )
+                },
                 enabled = !disabled && current > 1,
                 isPrimary = false,
                 size = size,
@@ -504,8 +515,14 @@ private fun FullPagination(
                 page == -2 -> {
                     // Jump prev (5 pages back)
                     val jumpPrevButton: @Composable () -> Unit = {
+                        val theme = useTheme()
                         JumpButton(
-                            content = jumpPrevIcon ?: { Text("«") },
+                            content = jumpPrevIcon ?: {
+                                Text(
+                                    "«",
+                                    color = if (!disabled) theme.components.pagination.colorText else theme.components.pagination.colorTextDisabled
+                                )
+                            },
                             enabled = !disabled,
                             size = size,
                             showTitle = showTitle,
@@ -526,8 +543,14 @@ private fun FullPagination(
                 page == -3 -> {
                     // Jump next (5 pages forward)
                     val jumpNextButton: @Composable () -> Unit = {
+                        val theme = useTheme()
                         JumpButton(
-                            content = jumpNextIcon ?: { Text("»") },
+                            content = jumpNextIcon ?: {
+                                Text(
+                                    "»",
+                                    color = if (!disabled) theme.components.pagination.colorText else theme.components.pagination.colorTextDisabled
+                                )
+                            },
                             enabled = !disabled,
                             size = size,
                             showTitle = showTitle,
@@ -547,10 +570,17 @@ private fun FullPagination(
 
                 else -> {
                     val pageButton: @Composable () -> Unit = {
+                        val theme = useTheme()
+                        val isPrimary = page == current
+                        val textColor = when {
+                            !disabled && isPrimary -> Color.Black
+                            !disabled -> theme.components.pagination.colorText
+                            else -> theme.components.pagination.colorTextDisabled
+                        }
                         PaginationButton(
-                            content = { Text("$page") },
+                            content = { Text("$page", color = textColor) },
                             enabled = !disabled,
-                            isPrimary = page == current,
+                            isPrimary = isPrimary,
                             size = size,
                             showTitle = showTitle,
                             title = "$page",
@@ -567,8 +597,14 @@ private fun FullPagination(
 
         // Next button
         val nextButton: @Composable () -> Unit = {
+            val theme = useTheme()
             PaginationButton(
-                content = nextIcon ?: { Text(">") },
+                content = nextIcon ?: {
+                    Text(
+                        ">",
+                        color = if (!disabled && current < totalPages) theme.components.pagination.colorText else theme.components.pagination.colorTextDisabled
+                    )
+                },
                 enabled = !disabled && current < totalPages,
                 isPrimary = false,
                 size = size,
@@ -608,6 +644,14 @@ private fun PageSizeChanger(
     onSizeChange: (Int) -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
+    val theme = useTheme()
+    val paginationToken = theme.components.pagination
+
+    // Capture colors before Popup (which has different composition context)
+    val bgColor = if (disabled) theme.token.colorBgLayout else paginationToken.itemBg
+    val textColor = if (disabled) paginationToken.colorTextDisabled else paginationToken.colorText
+    val containerColor = paginationToken.colorBgContainer
+    val activeColor = paginationToken.itemActiveBg
 
     Box {
         // Trigger button
@@ -615,7 +659,7 @@ private fun PageSizeChanger(
             modifier = Modifier
                 .height(if (size == PaginationSize.Small) 24.dp else 32.dp)
                 .clip(RoundedCornerShape(6.dp))
-                .background(if (disabled) Color(0xFFF5F5F5) else Color.White)
+                .background(bgColor)
                 .clickable(enabled = !disabled) { expanded = !expanded }
                 .padding(horizontal = 8.dp, vertical = 4.dp),
             contentAlignment = Alignment.Center
@@ -627,12 +671,12 @@ private fun PageSizeChanger(
                 Text(
                     text = "$pageSize ${locale.items_per_page}",
                     fontSize = if (size == PaginationSize.Small) 12.sp else 14.sp,
-                    color = if (disabled) Color(0xFF00000040) else Color(0xFF000000D9)
+                    color = textColor
                 )
                 Text(
                     text = "▼",
                     fontSize = 10.sp,
-                    color = if (disabled) Color(0xFF00000040) else Color(0xFF000000D9)
+                    color = textColor
                 )
             }
         }
@@ -646,7 +690,7 @@ private fun PageSizeChanger(
                 Card(
                     modifier = Modifier.width(150.dp),
                     elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White)
+                    colors = CardDefaults.cardColors(containerColor = containerColor)
                 ) {
                     Column(modifier = Modifier.padding(4.dp)) {
                         pageSizeOptions.forEach { option ->
@@ -658,14 +702,14 @@ private fun PageSizeChanger(
                                         expanded = false
                                     }
                                     .background(
-                                        if (option == pageSize) Color(0xFFF0F5FF) else Color.Transparent
+                                        if (option == pageSize) activeColor else Color.Transparent
                                     )
                                     .padding(horizontal = 12.dp, vertical = 8.dp)
                             ) {
                                 Text(
                                     text = "$option ${locale.items_per_page}",
                                     fontSize = 14.sp,
-                                    color = if (option == pageSize) Color(0xFF1890FF) else Color(0xFF000000D9)
+                                    color = if (option == pageSize) Color.Black else textColor
                                 )
                             }
                         }
@@ -765,16 +809,18 @@ private fun PaginationButton(
     itemModifier: Modifier?,
     onClick: () -> Unit,
 ) {
+    val paginationToken = config.theme.components.pagination
+
     val backgroundColor = when {
-        !enabled -> Color(0xFFF5F5F5)
-        isPrimary -> config.theme.token.colorPrimary
-        else -> Color.White
+        !enabled -> config.theme.token.colorBgLayout
+        isPrimary -> paginationToken.itemActiveBg
+        else -> paginationToken.itemBg
     }
 
-    val borderColor = when {
-        !enabled -> Color(0xFFD9D9D9)
-        isPrimary -> config.theme.token.colorPrimary
-        else -> Color(0xFFD9D9D9)
+    val textColor = when {
+        !enabled -> paginationToken.colorTextDisabled
+        isPrimary -> Color.Black  // Black text for selected page
+        else -> paginationToken.colorText  // White text for unselected pages
     }
 
     Box(
@@ -790,11 +836,15 @@ private fun PaginationButton(
             ) { onClick() },
         contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = Modifier.wrapContentSize(),
-            contentAlignment = Alignment.Center
+        CompositionLocalProvider(
+            LocalContentColor provides textColor
         ) {
-            content()
+            Box(
+                modifier = Modifier.wrapContentSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                content()
+            }
         }
     }
 }
@@ -812,13 +862,14 @@ private fun JumpButton(
     itemModifier: Modifier?,
     onClick: () -> Unit,
 ) {
+    val paginationToken = config.theme.components.pagination
     var isHovered by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
             .size(if (size == PaginationSize.Small) 24.dp else 32.dp)
             .clip(RoundedCornerShape(6.dp))
-            .background(if (isHovered && enabled) Color(0xFF1890FF) else Color.White)
+            .background(if (isHovered && enabled) paginationToken.colorPrimaryHover else paginationToken.itemBg)
             .then(itemModifier ?: Modifier)
             .clickable(
                 enabled = enabled,

@@ -94,6 +94,10 @@ data class MenuStyles(
     val itemIcon: Modifier? = null,
     val itemContent: Modifier? = null,
     val popup: Modifier? = null,
+    val itemTextColor: Color? = null,
+    val itemSelectedTextColor: Color? = null,
+    val itemBackgroundColor: Color? = null,
+    val itemSelectedBackgroundColor: Color? = null,
 )
 
 /**
@@ -584,18 +588,18 @@ private fun MenuItemComponent(
 
     // Background color based on state
     val backgroundColor = when {
-        isSelected -> colors.selectedBg
-        isActive -> colors.hoverBg.copy(alpha = 0.5f)
-        isHovered && !isDisabled -> colors.hoverBg
-        else -> Color.Transparent
+        isSelected -> styles?.itemSelectedBackgroundColor ?: colors.selectedBg
+        isActive -> styles?.itemBackgroundColor ?: colors.hoverBg.copy(alpha = 0.5f)
+        isHovered && !isDisabled -> styles?.itemBackgroundColor ?: colors.hoverBg
+        else -> styles?.itemBackgroundColor ?: Color.Transparent
     }
 
     // Text color
     val textColor = when {
         isDisabled -> colors.disabledTextColor
         item.danger -> colors.dangerColor
-        isSelected -> colors.selectedTextColor
-        else -> colors.textColor
+        isSelected -> styles?.itemSelectedTextColor ?: colors.selectedTextColor
+        else -> styles?.itemTextColor ?: colors.textColor
     }
 
     // Padding based on level and mode
@@ -646,7 +650,7 @@ private fun MenuItemComponent(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             // Icon (from item or from menu-level itemIcon)
-            if ((item.icon != null || itemIcon != null) && !inlineCollapsed) {
+            if (item.icon != null || itemIcon != null) {
                 Box(
                     modifier = Modifier
                         .size(16.dp)
@@ -669,19 +673,12 @@ private fun MenuItemComponent(
                         text = item.label,
                         color = textColor,
                         fontSize = 14.sp,
-                        fontWeight = if (isSelected) FontWeight.Medium else FontWeight.Normal
+                        fontWeight = FontWeight.Normal
                     )
 
                     // Extra content
                     item.extra?.invoke()
                 }
-            } else if (inlineCollapsed && level == 0) {
-                // Show first letter when collapsed
-                Text(
-                    text = item.label.firstOrNull()?.toString() ?: "",
-                    color = textColor,
-                    fontSize = 14.sp
-                )
             }
         }
     }
@@ -772,8 +769,8 @@ private fun MenuSubMenuComponent(
     // Text color
     val textColor = when {
         isDisabled -> colors.disabledTextColor
-        hasSelectedChild || isOpen -> colors.selectedTextColor
-        else -> colors.textColor
+        hasSelectedChild || isOpen -> styles?.itemSelectedTextColor ?: colors.selectedTextColor
+        else -> styles?.itemTextColor ?: colors.textColor
     }
 
     val startPadding = if (mode == MenuMode.Inline || mode == MenuMode.Vertical) {

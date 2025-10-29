@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.pointer.PointerEvent
@@ -253,6 +252,9 @@ fun AntCheckbox(
         )
         .focusRequester(focusRequester)
 
+    val theme = useTheme()
+    val checkboxToken = theme.components.checkbox
+
     Row(
         modifier = rootModifier,
         verticalAlignment = Alignment.CenterVertically,
@@ -264,10 +266,10 @@ fun AntCheckbox(
             modifier = styles?.input ?: Modifier,
             enabled = !disabled,
             colors = CheckboxDefaults.colors(
-                checkedColor = Color(0xFF1890FF),
-                uncheckedColor = Color(0xFFD9D9D9),
-                disabledCheckedColor = Color(0xFFD9D9D9),
-                disabledUncheckedColor = Color(0xFFF5F5F5)
+                checkedColor = checkboxToken.colorPrimary,
+                uncheckedColor = checkboxToken.colorBorder,
+                disabledCheckedColor = checkboxToken.colorBorder,
+                disabledUncheckedColor = theme.token.colorBgLayout
             )
         )
 

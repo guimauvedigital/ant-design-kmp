@@ -717,6 +717,12 @@ fun <T> AntTable(
     var currentPage by remember { mutableStateOf(pagination?.current ?: 1) }
     var currentPageSize by remember { mutableStateOf(pagination?.pageSize ?: 10) }
 
+    // Sync internal state with external pagination props (for controlled mode)
+    LaunchedEffect(pagination?.current, pagination?.pageSize) {
+        pagination?.current?.let { currentPage = it }
+        pagination?.pageSize?.let { currentPageSize = it }
+    }
+
     // Resizable columns state
     val resizableColumnWidths = remember {
         mutableStateMapOf<String, Dp>().apply {
@@ -748,8 +754,10 @@ fun <T> AntTable(
     }
 
     // Apply pagination
+    // Note: If pagination.total is provided, we assume server-side pagination and skip client-side pagination
     val paginatedData = remember(filteredData, currentPage, currentPageSize, pagination) {
-        if (pagination != null) {
+        if (pagination != null && pagination.total == 0) {
+            // Client-side pagination: total not provided, paginate the data locally
             val start = (currentPage - 1) * currentPageSize
             val end = minOf(start + currentPageSize, filteredData.size)
             if (start < filteredData.size) {
@@ -758,6 +766,7 @@ fun <T> AntTable(
                 emptyList()
             }
         } else {
+            // Server-side pagination: data is already paginated, just display it
             filteredData
         }
     }
@@ -946,7 +955,7 @@ fun <T> AntTable(
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .background(Color(0xFFFAFAFA))
+                                    .background(config.theme.components.table.headerBg)
                                     .padding(padding)
                             ) {
                                 summary(paginatedData)
@@ -980,7 +989,7 @@ fun <T> AntTable(
                 Box(modifier = Modifier.padding(16.dp)) {
                     AntPagination(
                         current = currentPage,
-                        total = filteredData.size,
+                        total = pagination.total,
                         pageSize = currentPageSize,
                         showSizeChanger = pagination.showSizeChanger,
                         showQuickJumper = pagination.showQuickJumper,
@@ -1174,6 +1183,7 @@ private fun <T> TableHeaderLevel(
             columns.forEach { column ->
                 if (column.children != null && column.children.isNotEmpty()) {
                     // Group header
+                    val theme = useTheme()
                     Box(
                         modifier = Modifier.weight(1f),
                         contentAlignment = Alignment.Center
@@ -1182,7 +1192,7 @@ private fun <T> TableHeaderLevel(
                             text = column.title.toString(),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFF000000).copy(alpha = 0.85f)
+                            color = theme.token.colorText
                         )
                     }
                 } else {
@@ -1331,6 +1341,7 @@ private fun <T> TableHeaderCell(
     onColumnResize: (String, Dp) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val theme = useTheme()
     val columnKey = column.key ?: column.dataIndex ?: ""
     val sortState = sortStates.firstOrNull { it.columnKey == columnKey }
     val filterState = filterStates.firstOrNull { it.columnKey == columnKey }
@@ -1376,7 +1387,7 @@ private fun <T> TableHeaderCell(
                 text = column.title.toString(),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF000000).copy(alpha = 0.85f),
+                color = theme.token.colorText,
                 maxLines = if (column.ellipsis) 1 else Int.MAX_VALUE,
                 overflow = if (column.ellipsis) TextOverflow.Ellipsis else TextOverflow.Clip
             )
@@ -1670,10 +1681,11 @@ private fun <T> RegularTableBody(
 
                 // Expanded content
                 if (isExpanded && canExpand && expandable?.expandedRowRender != null) {
+                    val theme = useTheme()
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(Color(0xFFFBFBFB))
+                            .background(theme.token.colorBgLayout)
                             .padding(
                                 start = padding + expandable.indentSize,
                                 top = padding,
@@ -1738,10 +1750,11 @@ private fun <T> VirtualTableBody(
 
                 // Expanded content
                 if (isExpanded && canExpand && expandable?.expandedRowRender != null) {
+                    val theme = useTheme()
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(Color(0xFFFBFBFB))
+                            .background(theme.token.colorBgLayout)
                             .padding(
                                 start = padding + expandable.indentSize,
                                 top = padding,
@@ -1779,14 +1792,16 @@ private fun <T> TableRow(
     customRowClassName: String? = null,
     allData: List<T>,
 ) {
+    val theme = useTheme()
+    val tableToken = theme.components.table
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(
                 when {
-                    isSelected -> Color(0xFFF0F5FF)
-                    index % 2 == 0 -> Color.White
-                    else -> Color(0xFFFAFAFA)
+                    isSelected -> tableToken.rowHoverBg
+                    else -> theme.token.colorBgBase
                 }
             )
             .clickable {

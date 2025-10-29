@@ -339,7 +339,7 @@ fun AntInput(
         disabled -> Color(0xFFF5F5F5)
         variant == InputVariant.Filled -> Color(0xFFFAFAFA)
         variant == InputVariant.Borderless || variant == InputVariant.Underlined -> Color.Transparent
-        else -> Color.White
+        else -> theme.components.input.backgroundColor
     }
 
     val padding = when (size) {
@@ -430,7 +430,7 @@ fun AntInput(
                     readOnly = readOnly,
                     textStyle = TextStyle(
                         fontSize = 14.sp,
-                        color = if (disabled) Color.Gray else theme.token.colorTextBase
+                        color = if (disabled) Color.Gray else theme.components.input.textColor
                     ),
                     keyboardOptions = keyboardOptions.copy(keyboardType = type),
                     keyboardActions = KeyboardActions(
@@ -463,7 +463,7 @@ fun AntInput(
                                     text = placeholder,
                                     style = TextStyle(
                                         fontSize = 14.sp,
-                                        color = Color(0xFFBFBFBF)
+                                        color = theme.components.input.placeholderColor
                                     )
                                 )
                             }
@@ -762,6 +762,7 @@ fun AntInputPassword(
     val visibilityIcon: @Composable () -> Unit = {
         // Show toggle if visibilityToggle is true or a VisibilityToggle object
         val shouldShowToggle = visibilityToggle == true || visibilityToggle is VisibilityToggle
+        val iconTheme = useTheme()
 
         if (shouldShowToggle) {
             Box(
@@ -782,11 +783,11 @@ fun AntInputPassword(
                 if (iconRender != null) {
                     iconRender(passwordVisible)
                 } else {
-                    // Default eye icons
+                    // Default eye icons - using simple text characters instead of emojis
                     Text(
-                        text = if (passwordVisible) "\uD83D\uDC41" else "\uD83D\uDEAB\uD83D\uDC41", // Eye / Eye-slash
-                        fontSize = 14.sp,
-                        color = Color(0xFFBFBFBF)
+                        text = if (passwordVisible) "👁" else "👁‍🗨",
+                        fontSize = 16.sp,
+                        color = iconTheme.components.input.placeholderColor
                     )
                 }
             }
@@ -975,7 +976,7 @@ fun AntTextArea(
         disabled -> Color(0xFFF5F5F5)
         variant == InputVariant.Filled -> Color(0xFFFAFAFA)
         variant == InputVariant.Borderless || variant == InputVariant.Underlined -> Color.Transparent
-        else -> Color.White
+        else -> theme.components.input.backgroundColor
     }
 
     val borderWidth = when {
@@ -1052,7 +1053,7 @@ fun AntTextArea(
                 readOnly = readOnly,
                 textStyle = TextStyle(
                     fontSize = 14.sp,
-                    color = if (disabled) Color.Gray else theme.token.colorTextBase,
+                    color = if (disabled) Color.Gray else theme.components.input.textColor,
                     lineHeight = 24.sp
                 ),
                 cursorBrush = SolidColor(theme.token.colorPrimary),
@@ -1063,7 +1064,7 @@ fun AntTextArea(
                                 text = placeholder,
                                 style = TextStyle(
                                     fontSize = 14.sp,
-                                    color = Color(0xFFBFBFBF)
+                                    color = theme.components.input.placeholderColor
                                 )
                             )
                         }

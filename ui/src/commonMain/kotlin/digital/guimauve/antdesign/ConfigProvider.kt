@@ -232,6 +232,7 @@ data class ComponentToken(
     val radio: RadioToken = RadioToken(),
     val switch: SwitchToken = SwitchToken(),
     val slider: SliderToken = SliderToken(),
+    val pagination: PaginationToken = PaginationToken(),
 )
 
 data class ButtonToken(
@@ -245,6 +246,9 @@ data class InputToken(
     val borderColor: Color = Color(0xFFD9D9D9),
     val hoverBorderColor: Color = Color(0xFF40A9FF),
     val activeBorderColor: Color = Color(0xFF1890FF),
+    val backgroundColor: Color = Color(0xFFFFFFFF),
+    val textColor: Color = Color(0xFF000000D9),
+    val placeholderColor: Color = Color(0xFF00000040),
 )
 
 data class SelectToken(
@@ -327,6 +331,17 @@ data class SliderToken(
     val handleSizeHover: Dp = 16.dp,
     val railSize: Dp = 4.dp,
     val dotSize: Dp = 8.dp,
+)
+
+data class PaginationToken(
+    val colorPrimary: Color = Color(0xFF1890FF),
+    val colorPrimaryHover: Color = Color(0xFF40A9FF),
+    val colorBgContainer: Color = Color(0xFFFFFFFF),
+    val colorText: Color = Color(0xFF000000D9),
+    val colorTextDisabled: Color = Color(0xFF00000040),
+    val itemActiveBg: Color = Color(0xFF1890FF),
+    val itemBg: Color = Color(0xFFFFFFFF),
+    val itemInputBg: Color = Color(0xFFFFFFFF),
 )
 
 /**
